@@ -12,7 +12,7 @@ class LoginController extends Controller
      return view('dashboard.auth.login');
 
    }
-
+  
    public function postlogin (AdminLoginRequest $request){
  // return $request; // check if function goto  success rout In action form  action="{{route('admin.postlogin')}}.
  $remember_me = $request->has('remember_me') ? true : false;

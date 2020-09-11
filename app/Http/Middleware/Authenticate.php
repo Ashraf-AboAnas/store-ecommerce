@@ -18,7 +18,9 @@ class Authenticate extends Middleware
             if (Request::is('admin/*')) //if Route admin/* but not Auth or not rigester in admin table
             return route('admin.login');// redirect to admin.login
             else
-            return route('login'); // redirect to user.login
+
+           return route('login'); // redirect to user.login
+          
         }
     }
 }
