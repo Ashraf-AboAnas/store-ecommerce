@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest; //to validation
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
+//use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -12,7 +15,7 @@ class LoginController extends Controller
      return view('dashboard.auth.login');
 
    }
-  
+
    public function postlogin (AdminLoginRequest $request){
  // return $request; // check if function goto  success rout In action form  action="{{route('admin.postlogin')}}.
  $remember_me = $request->has('remember_me') ? true : false;
@@ -26,4 +29,15 @@ class LoginController extends Controller
         return redirect()->back()->with(['error' => 'هناك خطا بالبيانات']);
 
     }
+
+    public function logout(){
+     $gaurd=$this->getGaurd();
+     $gaurd->logout();
+     return Redirect::route('admin.login');
+    }
+    private function getGaurd(){
+
+        return auth('admin');
+    }
+
 }
