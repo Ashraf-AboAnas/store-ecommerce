@@ -11,4 +11,9 @@ class Admin extends Authenticatable
     protected $table="admins";
     protected $guarded=[];
     public $timestamps=true;
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }
