@@ -34,7 +34,23 @@ Route::group(
                 Route::put('update', 'ProfileController@updataprofile')->name('update.profile');
 
             });
+            /***************************  Catrgory Route **************************** */
+            Route::resource('maincategories','MaincategoriesController',['as'=>'admin']);
 
+         ################################## categories routes ######################################
+        // Route::group(['prefix' => 'main_categories'], function () {
+        //     Route::get('/','MainCategoriesController@index') -> name('admin.maincategories');
+        //     Route::get('create','MainCategoriesController@create') -> name('admin.maincategories.create');
+        //     Route::post('store','MainCategoriesController@store') -> name('admin.maincategories.store');
+        //     Route::get('edit/{id}','MainCategoriesController@edit') -> name('admin.maincategories.edit');
+        //     Route::post('update/{id}','MainCategoriesController@update') -> name('admin.maincategories.update');
+        //     Route::get('delete/{id}','MainCategoriesController@destroy') -> name('admin.maincategories.delete');
+        // });
+            /***************************End Catrgory Route************************* */
+    /***************************  Catrgory Route **************************** */
+    Route::resource('subcategories','SubCategoriesController',['as'=>'admin']);
+
+    ################################## categories routes ######################################
         });
 
         Route::group(['namespace' => 'Dashboard', 'prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
