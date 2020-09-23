@@ -21,9 +21,15 @@ class Brand extends Model
         return $this->is_active == 1 ? 'غير مفعل' : 'مفعل';
 
     }
+    protected $appends = ['photo_url'];
 
-    public function getPhotoAttribute($value)
+    public function getPhotoUrlAttribute()
     {
-       return ($value !== null) ? asset('assets/images/brands/'.$value):"";
+        return asset('assets/images/brands/'.$this->photo);
     }
+
+    // public function getPhotoAttribute($value)
+    // {
+    //    return ($value !== null) ? asset('assets/images/brands/'.$value):"";
+    // }
 }

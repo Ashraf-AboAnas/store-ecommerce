@@ -56,6 +56,10 @@ Route::group(
      Route::resource('brands','BrandsController',['as'=>'admin']);
 
      ################################## BrandsController routes ######################################
+        /***************************  TagsController Route **************************** */
+     Route::resource('tags','TagsController',['as'=>'admin']);
+
+     ################################## TagsController routes ######################################
         });
 
         Route::group(['namespace' => 'Dashboard', 'prefix' => 'admin', 'middleware' => 'guest:admin'], function () {

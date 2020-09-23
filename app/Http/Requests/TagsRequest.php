@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BrandRequest extends FormRequest
+class TagsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,15 @@ class BrandRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'photo' => 'required_without:id|mimes:jpg,jpeg,png' // required_without:id used hidden input id . if edit brand without alter photo
+            'slug' => 'required|unique:tags,slug,' .$this->id
+        ];
+    }
+    public function messages()
+    {
+        return [
+           'name.required'=>'* يجب ادخال الاسم ',
+           'slug.required'=>' يجب ادخال الرابط * '
+
         ];
     }
 }

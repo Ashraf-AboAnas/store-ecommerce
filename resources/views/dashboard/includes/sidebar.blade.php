@@ -72,16 +72,18 @@
 
 
             <li class="nav-item"><a href=""><i class="la la-male"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">الطلاب  </span>
+                    <span class="menu-title" data-i18n="nav.dash.main">العلامات  tags </span>
                     <span
-                        class="badge badge badge-warning  badge-pill float-right mr-2"></span>
+                        class="badge badge badge-warning  badge-pill float-right mr-2">
+                        {{App\Models\Tag::all()->count()}}
+                    </span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
-                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    <li class="active"><a class="menu-item" href="{{route('admin.tags.index')}}"
+                                          data-i18n="nav.dash.ecommerce"> عرض tags الكل </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
-                            طالب </a>
+                <li><a class="menu-item" href="{{route('admin.tags.create')}}" data-i18n="nav.dash.crypto"> new tagأضافة
+                             </a>
                     </li>
                 </ul>
             </li>

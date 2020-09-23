@@ -10,9 +10,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="">الرئيسية </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href=""> الاقسام الرئيسية </a>
+                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"> tags </a>
                                 </li>
-                                <li class="breadcrumb-item active"> تعديل - {{$brand -> name}}
+                                <li class="breadcrumb-item active"> تعديل - {{$tag -> name}}
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> تعديل قسم رئيسي </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> تعديل tags </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -43,79 +43,50 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('admin.brands.update',$brand -> id)}}"
+                                              action="{{route('admin.tags.update',$tag -> id)}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
-                                         @method('PUT')
-                                            <input name="id" value="{{$brand -> id}}" type="hidden">
+                                       @method('PUT')
+                                            <input name="id" value="{{$tag -> id}}" type="hidden">
 
-                                            <div class="form-group">
-                                                <div class="text-center">
-                                                    <img
-                                                    {{-- asset('assets/images/brands/'.$brand -> photo) --}}
-                                                        src="{{$brand -> photo_url}}"
-                                                        class="rounded-circle  height-150" alt="صورة القسم  ">
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label> صوره القسم </label>
-                                                <label id="projectinput7" class="file center-block">
-                                                    <input type="file" id="file" name="photo">
-                                                    <span class="file-custom"></span>
-                                                </label>
-                                                @error('photo')
-                                                <span class="text-danger">{{$message}}</span>
-                                                @enderror
-                                            </div>
 
                                             <div class="form-body">
 
-                                                <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i> بيانات tags </h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم القسم
-                                                                 </label>
+                                                            <label for="projectinput1"> الاسم
+                                                            </label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{$brand -> name}}"
+                                                                   value="{{$tag -> name}}"
                                                                    name="name">
                                                             @error("name")
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-2">
-                                                            <input type="checkbox" value="1"
-                                                                   name="is_active"
-                                                                   id="switcheryColor4"
-                                                                   class="switchery" data-color="success"
-                                                                   @if($brand -> is_active == 1)checked @endif/>
-                                                            <label for="switcheryColor4"
-                                                                   class="card-title ml-1">الحالة  </label>
-
-                                                            @error("is_active")
-                                                            <span class="text-danger">{{$message }}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    </div>
-
-
-
-
+                                                       <div class="col-md-6">
+                                                              <div class="form-group">
+                                                                  <label for="projectinput1"> اسم بالرابط
+                                                                  </label>
+                                                                  <input type="text" id="name"
+                                                                         class="form-control"
+                                                                         placeholder="  "
+                                                                         value="{{$tag -> slug}}"
+                                                                         name="slug">
+                                                                  @error("slug")
+                                                                  <span class="text-danger">{{$message}}</span>
+                                                                  @enderror
+                                                              </div>
+                                                          </div>
 
                                                 </div>
-                                                <div class="row">
 
-                                                </div>
                                             </div>
-
 
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
