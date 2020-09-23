@@ -153,6 +153,7 @@ class SubcategoriesController extends Controller
                 return redirect()->route('admin.subcategories')->with(['error' => 'هذا القسم غير موجود ']);
 
             $category->delete();
+            $category->translation()->delete();
 
             return redirect()->route('admin.subcategories')->with(['success' => 'تم  الحذف بنجاح']);
 

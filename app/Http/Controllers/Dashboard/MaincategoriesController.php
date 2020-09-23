@@ -60,7 +60,7 @@ class MaincategoriesController extends Controller
             //dd($category);
             DB::commit();
             return redirect()->route('admin.maincategories.index')->with(['success' => 'تم ألاضافة بنجاح']);
-         
+
 
         } catch (\Exception $ex) {
           DB::rollback();
@@ -155,7 +155,7 @@ class MaincategoriesController extends Controller
                 return redirect()->route('admin.maincategories.index')->with(['error' => 'هذا القسم غيرموجود']);
             }
             $category->delete();
-
+            $category->translation()->delete();
             return redirect()->route('admin.maincategories.index')->with(['success' => 'تم الحذف بنجاح  ']);
 
         } catch (\Throwable $th) {

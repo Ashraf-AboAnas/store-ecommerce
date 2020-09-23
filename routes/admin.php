@@ -47,10 +47,19 @@ Route::group(
         //     Route::get('delete/{id}','MainCategoriesController@destroy') -> name('admin.maincategories.delete');
         // });
             /***************************End Catrgory Route************************* */
-    /***************************  Catrgory Route **************************** */
+    /***************************  subCategories Route **************************** */
     Route::resource('subcategories','SubCategoriesController',['as'=>'admin']);
 
-    ################################## categories routes ######################################
+    ################################## subcategories routes ######################################
+
+     /***************************  BrandsController Route **************************** */
+     Route::resource('brands','BrandsController',['as'=>'admin']);
+
+     ################################## BrandsController routes ######################################
+        /***************************  TagsController Route **************************** */
+     Route::resource('tags','TagsController',['as'=>'admin']);
+
+     ################################## TagsController routes ######################################
         });
 
         Route::group(['namespace' => 'Dashboard', 'prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
